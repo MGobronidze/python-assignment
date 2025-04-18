@@ -30,3 +30,19 @@ class Character:
     def __str__(self):
         return f"{self.name} (Health: {self.health}, Attack Power: {self.attack_power})"
 
+class Player(Character):
+    def __init__(self, name, health, attack_power, gold=0):
+        super().__init__(name, health, attack_power)
+        self._gold = gold
+
+    @property
+    def gold(self):
+        return self._gold
+
+    def collect_gold(self, amount):
+        self._gold += amount
+        print(f"{self.name} has collected {amount} gold!")
+
+    def __str__(self):
+        return super().__str__() + f" (Gold: {self.gold})"
+
